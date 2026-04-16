@@ -165,49 +165,7 @@ tbody td{padding:5px 10px;white-space:nowrap;color:#1a1210;font-size:.73rem}
 .pbtn{padding:4px 11px;border-radius:6px;border:1.5px solid #d4ccc0;background:#fff;color:#5a4f4a;font-family:inherit;font-size:.7rem;font-weight:700;cursor:pointer;transition:all .12s;min-height:34px}
 .pbtn:hover,.pbtn.act{border-color:#c8102e;color:#c8102e;background:#faeaed}
 .pinf{font-size:.6rem;color:#9a8f8a;font-weight:600}
-@media(max-width:750px){
-  /* Header */
-  .hdr{padding:0 12px;height:50px}.hdr-stats{display:none}.pill{display:none}
-  .hdr-title{font-size:.85rem}
-  /* Topbar — todo en columna */
-  .topbar{padding:8px 12px;gap:8px}
-  .topbar-row{flex-direction:column;align-items:stretch;gap:8px}
-  .topbar-sep{display:none}
-  /* Centro — botones full width */
-  .centro-btns{display:grid;grid-template-columns:repeat(3,1fr);gap:5px}
-  .cbtn{padding:8px 4px;font-size:.75rem;text-align:center}
-  /* Fechas — compacto */
-  .dnav-compact{width:100%}
-  .dnav-top{flex-direction:column;align-items:stretch;gap:5px}
-  .quick-btns{display:grid;grid-template-columns:repeat(3,1fr);gap:4px}
-  .qbtn{text-align:center;padding:6px 4px;font-size:.7rem}
-  .qbtn-sep{display:none}
-  .range-toggle-btn{grid-column:1/-1}
-  .dscroll{margin-top:2px}
-  /* Chips variedad y almacén */
-  .ms-chips{flex-wrap:wrap}
-  .ms-chip{font-size:.66rem;padding:4px 8px}
-  /* Main */
-  .main{padding:10px 12px;gap:10px}
-  /* KPIs — 2 columnas en mobile */
-  .kpis{grid-template-columns:repeat(2,1fr);gap:8px}
-  .kpi{padding:11px 10px}
-  .kpi-v{font-size:1.25rem}
-  /* Ops */
-  .ops-grid{grid-template-columns:repeat(2,1fr);gap:8px}
-  .ops-val{font-size:1.2rem}
-  /* Turnos */
-  .trow{grid-template-columns:1fr;gap:8px}
-  .tsum-stats{grid-template-columns:repeat(5,1fr)}
-  /* TC */
-  .tc-grid{grid-template-columns:1fr;gap:8px}
-  .tc-stats{grid-template-columns:repeat(4,1fr)}
-  /* Charts */
-  .cgrid{grid-template-columns:1fr;gap:8px}
-  .ccard.full{grid-column:1}
-}
-@media(max-width:420px){
-  .kpis{grid-template-columns:repeat(2,1fr)}
+
   .tsum-stats{grid-template-columns:repeat(3,1fr)}
   .tc-stats{grid-template-columns:repeat(2,1fr)}
   .centro-btns{grid-template-columns:1fr 1fr}
@@ -245,13 +203,72 @@ tbody td{padding:5px 10px;white-space:nowrap;color:#1a1210;font-size:.73rem}
 .collapse-btn:hover{background:#faeaed;color:#c8102e;border-color:#c8102e}
 .ham-btn{background:none;border:none;cursor:pointer;padding:6px;display:none;flex-direction:column;gap:4px;flex-shrink:0}
 .ham-btn span{display:block;width:20px;height:2px;background:#fff;border-radius:2px}
-@media(max-width:640px){
-  .ham-btn{display:flex}
+
   .sidebar{position:fixed;top:0;left:0;height:100%;transform:translateX(-100%)}
   .sidebar.open{transform:translateX(0)}
   .collapse-btn{display:none}
   .kpis{grid-template-columns:repeat(2,1fr)!important}
   .tb-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
+}
+
+
+/* ══ RESPONSIVE MOBILE ═══════════════════════════════════ */
+@media(max-width:768px){
+  /* Body */
+  body{height:100vh;height:100dvh}
+  /* Header */
+  .hdr{padding:0 10px;height:48px}
+  .hdr-stats{display:none}
+  .pill{display:none}
+  .hdr-title{font-size:.75rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:160px}
+  .hdr-sub{display:none}
+  .btn-descarga{font-size:.55rem;padding:3px 8px}
+  /* Hamburger */
+  .ham-btn{display:flex}
+  /* Sidebar overlay */
+  .sidebar{position:fixed;top:0;left:0;height:100dvh;transform:translateX(-100%)}
+  .sidebar.open{transform:translateX(0)}
+  .collapse-btn{display:none}
+  /* Topbar */
+  .topbar{padding:8px 12px;gap:6px}
+  .topbar-row{flex-direction:column;align-items:stretch;gap:6px}
+  .topbar-sep{display:none}
+  .dnav-compact{width:100%}
+  .dnav-top{flex-wrap:wrap;gap:6px}
+  /* Main */
+  .main{padding:10px 12px;gap:10px}
+  /* KPIs: 2 columnas */
+  .kpis{grid-template-columns:repeat(2,1fr);gap:7px}
+  .kpi{padding:10px 9px}
+  .kpi-v{font-size:1.15rem}
+  .kpi-s{font-size:.48rem}
+  /* Ops */
+  .ops-grid{grid-template-columns:repeat(2,1fr);gap:8px}
+  .ops-val{font-size:1.1rem}
+  /* Turno */
+  .trow{grid-template-columns:1fr;gap:8px}
+  .tsum-stats{grid-template-columns:repeat(3,1fr)}
+  /* TC */
+  .tc-grid{grid-template-columns:1fr;gap:8px}
+  .tc-stats{grid-template-columns:repeat(2,1fr)}
+  .tc-prioridad{font-size:.63rem;line-height:1.4}
+  /* Charts */
+  .cgrid{grid-template-columns:1fr;gap:8px}
+  .ccard.full{grid-column:1}
+  /* Table */
+  .tb-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;max-height:none}
+  /* Chips */
+  .ms-chips{flex-wrap:wrap}
+  .ms-chip{font-size:.65rem;padding:4px 8px}
+}
+@media(max-width:420px){
+  .hdr-title{max-width:110px;font-size:.7rem}
+  .btn-descarga{display:none}
+  .kpis{grid-template-columns:repeat(2,1fr)}
+  .ops-grid{grid-template-columns:1fr}
+  .tsum-stats{grid-template-columns:repeat(2,1fr)}
+  .tc-stats{grid-template-columns:repeat(2,1fr)}
+  .kpi-v{font-size:1.05rem}
 }
 
 </style>
@@ -267,7 +284,7 @@ tbody td{padding:5px 10px;white-space:nowrap;color:#1a1210;font-size:.73rem}
     </div>
   </div>
   <div style="display:flex;align-items:center;gap:10px">
-    <button onclick="descargarReporte()" style="background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.4);border-radius:20px;padding:4px 12px;font-size:.58rem;font-weight:700;color:#fff;cursor:pointer;letter-spacing:.06em;white-space:nowrap;transition:background .15s" onmouseover="this.style.background='rgba(255,255,255,.28)'" onmouseout="this.style.background='rgba(255,255,255,.15)'">&#8595; Descargar</button>
+    <button onclick="descargarReporte()" class="btn-descarga" style="background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.4);border-radius:20px;padding:4px 12px;font-size:.58rem;font-weight:700;color:#fff;cursor:pointer;letter-spacing:.06em;white-space:nowrap;transition:background .15s" onmouseover="this.style.background='rgba(255,255,255,.28)'" onmouseout="this.style.background='rgba(255,255,255,.15)'">&#8595; Descargar</button>
     <span class="pill">● 16-Apr-2026</span>
     <div class="hdr-stats">
       <div class="hs"><div class="hs-v" id="h-rec">—</div><div class="hs-l">Registros</div></div>
@@ -1024,6 +1041,20 @@ function descargarReporte() {
   a.href = url; a.download = nombre; a.click();
   URL.revokeObjectURL(url);
 }
+
+
+// Redibujar graficos al cambiar sidebar
+function triggerChartResize(){
+  setTimeout(()=>{
+    window.dispatchEvent(new Event('resize'));
+    if(typeof renderAll==='function') renderAll();
+    else if(typeof applyF==='function') applyF();
+  }, 250);
+}
+const _origToggleDesktop = toggleDesktop;
+toggleDesktop = function(){ _origToggleDesktop(); triggerChartResize(); };
+const _origToggleMobile = toggleMobile;
+toggleMobile = function(){ _origToggleMobile(); triggerChartResize(); };
 
 
     if ('2026-03-28') {
