@@ -166,12 +166,6 @@ tbody td{padding:5px 10px;white-space:nowrap;color:#1a1210;font-size:.73rem}
 .pbtn:hover,.pbtn.act{border-color:#c8102e;color:#c8102e;background:#faeaed}
 .pinf{font-size:.6rem;color:#9a8f8a;font-weight:600}
 
-  .tsum-stats{grid-template-columns:repeat(3,1fr)}
-  .tc-stats{grid-template-columns:repeat(2,1fr)}
-  .centro-btns{grid-template-columns:1fr 1fr}
-  .cbtn:last-child{grid-column:1/-1}
-  .quick-btns{grid-template-columns:repeat(2,1fr)}
-}
 
 /* ══ SIDEBAR LAYOUT ══════════════════════════════════════ */
 .page-body{display:flex;flex:1;overflow:hidden;position:relative}
@@ -204,17 +198,15 @@ tbody td{padding:5px 10px;white-space:nowrap;color:#1a1210;font-size:.73rem}
 .ham-btn{background:none;border:none;cursor:pointer;padding:6px;display:none;flex-direction:column;gap:4px;flex-shrink:0}
 .ham-btn span{display:block;width:20px;height:2px;background:#fff;border-radius:2px}
 
-  .sidebar{position:fixed;top:0;left:0;height:100%;transform:translateX(-100%)}
-  .sidebar.open{transform:translateX(0)}
-  .collapse-btn{display:none}
-  .kpis{grid-template-columns:repeat(2,1fr)!important}
-  .tb-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
-}
+
+
+/* ══ RESPONSIVE MOBILE ═══════════════════════════════════ */
+
+
 
 
 /* ══ RESPONSIVE MOBILE ═══════════════════════════════════ */
 @media(max-width:768px){
-  /* Body */
   body{height:100vh;height:100dvh}
   /* Header */
   .hdr{padding:0 10px;height:48px}
@@ -223,11 +215,13 @@ tbody td{padding:5px 10px;white-space:nowrap;color:#1a1210;font-size:.73rem}
   .hdr-title{font-size:.75rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:160px}
   .hdr-sub{display:none}
   .btn-descarga{font-size:.55rem;padding:3px 8px}
-  /* Hamburger */
+  /* Hamburger: visible en mobile */
   .ham-btn{display:flex}
-  /* Sidebar overlay */
-  .sidebar{position:fixed;top:0;left:0;height:100dvh;transform:translateX(-100%)}
+  /* Sidebar: overlay deslizante */
+  .sidebar{position:fixed;top:0;left:0;width:240px;height:100dvh;z-index:300;
+           transform:translateX(-100%);transition:transform .25s ease}
   .sidebar.open{transform:translateX(0)}
+  .overlay{z-index:299}
   .collapse-btn{display:none}
   /* Topbar */
   .topbar{padding:8px 12px;gap:6px}
@@ -252,12 +246,12 @@ tbody td{padding:5px 10px;white-space:nowrap;color:#1a1210;font-size:.73rem}
   .tc-grid{grid-template-columns:1fr;gap:8px}
   .tc-stats{grid-template-columns:repeat(2,1fr)}
   .tc-prioridad{font-size:.63rem;line-height:1.4}
-  /* Charts */
+  /* Charts: 1 columna */
   .cgrid{grid-template-columns:1fr;gap:8px}
   .ccard.full{grid-column:1}
-  /* Table */
+  /* Tabla con scroll horizontal */
   .tb-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;max-height:none}
-  /* Chips */
+  /* Chips variedad/almacen */
   .ms-chips{flex-wrap:wrap}
   .ms-chip{font-size:.65rem;padding:4px 8px}
 }
