@@ -266,7 +266,8 @@ tbody td{padding:5px 10px;white-space:nowrap;color:#1a1210;font-size:.73rem}
       <div class="hdr-sub">Sugal Group · Métricas ponderadas por Líquido</div>
     </div>
   </div>
-  <div style="display:flex;align-items:center;gap:14px">
+  <div style="display:flex;align-items:center;gap:10px">
+    <button onclick="descargarReporte()" style="background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.4);border-radius:20px;padding:4px 12px;font-size:.58rem;font-weight:700;color:#fff;cursor:pointer;letter-spacing:.06em;white-space:nowrap;transition:background .15s" onmouseover="this.style.background='rgba(255,255,255,.28)'" onmouseout="this.style.background='rgba(255,255,255,.15)'">&#8595; Descargar</button>
     <span class="pill">● 16-Apr-2026</span>
     <div class="hdr-stats">
       <div class="hs"><div class="hs-v" id="h-rec">—</div><div class="hs-l">Registros</div></div>
@@ -1011,6 +1012,17 @@ function sbTurno(t, el) {
   });
   el.classList.add('sb-act');
   selT = t; applyF();
+}
+
+
+function descargarReporte() {
+  const fecha = TODAY || new Date().toISOString().split('T')[0];
+  const nombre = 'Reporte_Tomate_Vaciado_' + fecha + '.html';
+  const blob = new Blob([document.documentElement.outerHTML], {type: 'text/html;charset=utf-8'});
+  const url  = URL.createObjectURL(blob);
+  const a    = document.createElement('a');
+  a.href = url; a.download = nombre; a.click();
+  URL.revokeObjectURL(url);
 }
 
 
