@@ -200,68 +200,110 @@ tbody td{padding:5px 10px;white-space:nowrap;color:#1a1210;font-size:.73rem}
 
 
 
-/* ══ RESPONSIVE MOBILE ═══════════════════════════════════ */
 
 
-
-
-/* ══ RESPONSIVE MOBILE ═══════════════════════════════════ */
+/* ══ MOBILE RESPONSIVE ════════════════════════════════════════════════════ */
 @media(max-width:768px){
-  body{height:100vh;height:100dvh}
-  /* Header */
+
+  /* ── Layout general: scroll normal del documento ── */
+  body{
+    height:auto !important;
+    overflow:auto !important;
+    overflow-x:hidden !important;
+  }
+  .page-body{
+    overflow:visible !important;
+    height:auto !important;
+  }
+  .scroll-area{
+    overflow:visible !important;
+    height:auto !important;
+    min-height:0;
+  }
+
+  /* ── Header ── */
   .hdr{padding:0 10px;height:48px}
   .hdr-stats{display:none}
   .pill{display:none}
-  .hdr-title{font-size:.75rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:160px}
+  .hdr-title{font-size:.75rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:150px}
   .hdr-sub{display:none}
   .btn-descarga{font-size:.55rem;padding:3px 8px}
-  /* Hamburger: visible en mobile */
+
+  /* ── Hamburgesa ── */
   .ham-btn{display:flex}
-  /* Sidebar: overlay deslizante */
-  .sidebar{position:fixed;top:0;left:0;width:240px;height:100dvh;z-index:300;
-           transform:translateX(-100%);transition:transform .25s ease}
-  .sidebar.open{transform:translateX(0)}
-  .overlay{z-index:299}
-  .collapse-btn{display:none}
-  /* Topbar */
+
+  /* ── Sidebar: overlay deslizante fijo ── */
+  .sidebar{
+    position:fixed !important;
+    top:0 !important;
+    left:0 !important;
+    width:240px !important;
+    height:100% !important;
+    height:100dvh !important;
+    z-index:9000 !important;
+    transform:translateX(-100%) !important;
+    transition:transform .25s ease !important;
+    box-shadow:4px 0 20px rgba(0,0,0,.2);
+  }
+  .sidebar.open{
+    transform:translateX(0) !important;
+  }
+  .overlay{z-index:8999}
+  .collapse-btn{display:none !important}
+
+  /* ── Topbar ── */
   .topbar{padding:8px 12px;gap:6px}
   .topbar-row{flex-direction:column;align-items:stretch;gap:6px}
   .topbar-sep{display:none}
   .dnav-compact{width:100%}
   .dnav-top{flex-wrap:wrap;gap:6px}
-  /* Main */
-  .main{padding:10px 12px;gap:10px}
-  /* KPIs: 2 columnas */
-  .kpis{grid-template-columns:repeat(2,1fr);gap:7px}
+
+  /* ── Main: sin overflow horizontal ── */
+  .main{padding:10px 12px;gap:10px;max-width:100%;box-sizing:border-box}
+
+  /* ── KPIs: 2 columnas ── */
+  .kpis{grid-template-columns:repeat(2,1fr) !important;gap:7px}
   .kpi{padding:10px 9px}
   .kpi-v{font-size:1.15rem}
   .kpi-s{font-size:.48rem}
-  /* Ops */
+
+  /* ── Ops ── */
   .ops-grid{grid-template-columns:repeat(2,1fr);gap:8px}
   .ops-val{font-size:1.1rem}
-  /* Turno */
+
+  /* ── Turno ── */
   .trow{grid-template-columns:1fr;gap:8px}
   .tsum-stats{grid-template-columns:repeat(3,1fr)}
-  /* TC */
+
+  /* ── TC Panel ── */
   .tc-grid{grid-template-columns:1fr;gap:8px}
   .tc-stats{grid-template-columns:repeat(2,1fr)}
   .tc-prioridad{font-size:.63rem;line-height:1.4}
-  /* Charts: 1 columna */
-  .cgrid{grid-template-columns:1fr;gap:8px}
-  .ccard.full{grid-column:1}
-  /* Tabla con scroll horizontal */
-  .tb-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;max-height:none}
-  /* Chips variedad/almacen */
+
+  /* ── Graficos: 1 columna, ancho completo ── */
+  .cgrid{grid-template-columns:1fr !important;gap:8px}
+  .ccard.full{grid-column:1 !important}
+  .ccard{width:100%;box-sizing:border-box}
+  .chart-wrap{width:100%;box-sizing:border-box}
+
+  /* ── Tabla: scroll horizontal dentro del card ── */
+  .tb-wrap{
+    overflow-x:auto !important;
+    -webkit-overflow-scrolling:touch;
+    max-height:400px;
+  }
+
+  /* ── Chips ── */
   .ms-chips{flex-wrap:wrap}
   .ms-chip{font-size:.65rem;padding:4px 8px}
 }
+
 @media(max-width:420px){
   .hdr-title{max-width:110px;font-size:.7rem}
   .btn-descarga{display:none}
-  .kpis{grid-template-columns:repeat(2,1fr)}
+  .kpis{grid-template-columns:repeat(2,1fr) !important}
   .ops-grid{grid-template-columns:1fr}
   .tsum-stats{grid-template-columns:repeat(2,1fr)}
-  .tc-stats{grid-template-columns:repeat(2,1fr)}
   .kpi-v{font-size:1.05rem}
 }
 
@@ -1049,6 +1091,15 @@ const _origToggleDesktop = toggleDesktop;
 toggleDesktop = function(){ _origToggleDesktop(); triggerChartResize(); };
 const _origToggleMobile = toggleMobile;
 toggleMobile = function(){ _origToggleMobile(); triggerChartResize(); };
+
+
+// Redibujar graficos en mobile despues de que el DOM este completamente listo
+if(window.innerWidth<=768){
+  setTimeout(function(){
+    window.dispatchEvent(new Event('resize'));
+    if(typeof applyF==='function') applyF();
+  }, 100);
+}
 
 
     if ('2026-03-28') {
